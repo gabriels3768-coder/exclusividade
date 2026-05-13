@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema Exclusividade</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-loader" id="app-loader">
+      <div class="app-loader-card">
+        <div class="app-loader-mark">$</div>
+        <strong>Sistema Exclusividade</strong>
+        <span>Carregando ambiente local...</span>
+      </div>
+    </div>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">$</div>
+          <div>
+            <strong>Sistema Exclusividade</strong>
+            <span>Gestao local integrada</span>
+          </div>
+        </div>
+
+        <nav class="menu">
+          <button class="menu-item active with-icon" data-view="dashboard">
+            <span class="menu-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11 12 4l8 7v8a1 1 0 0 1-1 1h-4v-5H9v5H5a1 1 0 0 1-1-1z"/></svg>
+            </span>
+            <span>Home</span>
+          </button>
+
+          <div class="menu-group collapsible" data-group="people">
+            <button class="menu-toggle" type="button" data-group-toggle="people">
+              <span class="menu-toggle-label">
+                <span class="menu-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 11a3 3 0 1 0-3-3 3 3 0 0 0 3 3Zm-8 1a3 3 0 1 0-3-3 3 3 0 0 0 3 3Zm8 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4ZM8 14c-.29 0-.62.02-.97.05C5.08 14.22 2 15.1 2 18v2h6v-2c0-1.24.48-2.27 1.28-3.08A6.72 6.72 0 0 0 8 14Z"/></svg>
+                </span>
+                <span>Pessoas</span>
+              </span>
+              <span class="menu-arrow">></span>
+            </button>
+            <div class="submenu">
+              <button class="menu-item submenu-item" data-view="clients">Clientes</button>
+              <button class="menu-item submenu-item" data-view="employees">Funcionarios</button>
+              <button class="menu-item submenu-item" data-view="users">Usuarios</button>
+              <button class="menu-item submenu-item" data-view="suppliers">Fornecedores</button>
+            </div>
+          </div>
+
+          <div class="menu-group collapsible" data-group="financial">
+            <button class="menu-toggle" type="button" data-group-toggle="financial">
+              <span class="menu-toggle-label">
+                <span class="menu-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4zm2 2v8h12V8Zm3 2h6v2H9Zm0 3h4v2H9Z"/></svg>
+                </span>
+                <span>Financeiro</span>
+              </span>
+              <span class="menu-arrow">></span>
+            </button>
+            <div class="submenu">
+              <button class="menu-item submenu-item" data-view="receivable">Contas a Receber</button>
+              <button class="menu-item submenu-item" data-view="payable">Contas a Pagar</button>
+              <button class="menu-item submenu-item" data-view="creditLimits">Limite de Credito</button>
+              <button class="menu-item submenu-item" data-view="costCenters">Centro de Custo</button>
+              <button class="menu-item submenu-item" data-view="cashClosing">Fechamento de Caixa</button>
+            </div>
+          </div>
+
+          <div class="menu-group collapsible" data-group="inventory">
+            <button class="menu-toggle" type="button" data-group-toggle="inventory">
+              <span class="menu-toggle-label">
+                <span class="menu-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5Zm9 .8L6.2 11.1v5.5L12 19.4l5.8-2.8v-5.5Z"/></svg>
+                </span>
+                <span>Estoque</span>
+              </span>
+              <span class="menu-arrow">></span>
+            </button>
+            <div class="submenu">
+              <button class="menu-item submenu-item" data-view="inventoryCategories">Categorias</button>
+              <button class="menu-item submenu-item" data-view="inventoryProducts">Produtos</button>
+              <button class="menu-item submenu-item" data-view="inventoryImport">Entrada por Planilha</button>
+              <button class="menu-item submenu-item" data-view="inventoryList">Lista de Produtos</button>
+            </div>
+          </div>
+
+          <div class="menu-group collapsible" data-group="pdv">
+            <button class="menu-toggle" type="button" data-group-toggle="pdv">
+              <span class="menu-toggle-label">
+                <span class="menu-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v4H5Zm-1 6h16l1 10H3Zm5 3v3h2v-3Zm4 0v3h2v-3Z"/></svg>
+                </span>
+                <span>PDV</span>
+              </span>
+              <span class="menu-arrow">></span>
+            </button>
+            <div class="submenu">
+              <button class="menu-item submenu-item" data-view="pdvSales">Vendas</button>
+              <button class="menu-item submenu-item" data-view="pdvHistory">Historico</button>
+            </div>
+          </div>
+
+          <div class="menu-group collapsible" data-group="reports">
+            <button class="menu-toggle" type="button" data-group-toggle="reports">
+              <span class="menu-toggle-label">
+                <span class="menu-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h9l5 5v15H6Zm8 1.5V8h4.5ZM9 12h6v2H9Zm0 4h6v2H9Z"/></svg>
+                </span>
+                <span>Relatorios</span>
+              </span>
+              <span class="menu-arrow">></span>
+            </button>
+            <div class="submenu">
+              <button class="menu-item submenu-item" data-view="reportsClients">Relatorio de Clientes</button>
+              <button class="menu-item submenu-item" data-view="reportsDecision">Tomada de Decisao</button>
+              <button class="menu-item submenu-item" data-view="reportsReceivables">Relatorio de Recebimentos</button>
+              <button class="menu-item submenu-item" data-view="reportsExpenses">Relatorio de Despesas</button>
+              <button class="menu-item submenu-item" data-view="reportsSales">Relatorio de Vendas</button>
+              <button class="menu-item submenu-item" data-view="reportsProfit">Demonstrativo de Lucro</button>
+              <button class="menu-item submenu-item" data-view="reportsAudit">Auditoria</button>
+            </div>
+          </div>
+        </nav>
+
+        <div class="sidebar-note">
+          Ambiente local
+          <span>Servidor, banco SQLite e interface rodando no computador.</span>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="topbar-title-block">
+            <p class="eyebrow">Sistema Exclusividade</p>
+            <h1 id="page-title">Dashboard</h1>
+            <span class="topbar-helper" id="topbar-helper">Controle local com financeiro, estoque, PDV e relatorios integrados.</span>
+          </div>
+          <div class="topbar-badge">
+            <strong id="session-company">Empresa 1</strong>
+            <span id="session-role-label">Nivel: Administrador</span>
+          </div>
+          <div class="topbar-actions">
+            <span class="session-user" id="session-user-name">Sem sessao</span>
+            <button type="button" class="ghost" id="change-password-button">Trocar Senha</button>
+            <button type="button" class="ghost" id="logout-button">Sair</button>
+          </div>
+        </header>
+
+        <section class="view active" id="dashboard-view">
+          <div class="dashboard-actions">
+            <button type="button" class="ghost" id="system-backup">Fazer Backup</button>
+            <button type="button" class="ghost" id="system-restore">Restaurar Backup</button>
+            <button type="button" class="danger-btn" id="system-reset">Limpar Sistema</button>
+            <select id="system-plan" class="plan-select">
+              <option value="completo">Plano Completo</option>
+              <option value="financeiro">Plano Financeiro</option>
+            </select>
+            <input id="system-company-name" class="plan-select company-name-input" type="text" placeholder="Nome da empresa" />
+            <button type="button" class="ghost" id="system-plan-save">Aplicar Plano</button>
+            <span class="plan-badge" id="system-plan-badge">Plano Completo</span>
+            <input type="file" id="system-restore-file" accept=".db,.sqlite,.sqlite3" class="hidden-panel" />
+          </div>
+          <div class="cards-grid" id="dashboard-cards"></div>
+          <div class="panel">
+            <div class="section-title">
+              <h2>Alertas</h2>
+              <span>Pontos de atencao para a operacao</span>
+            </div>
+            <div class="alerts-list" id="alerts-list"></div>
+          </div>
+        </section>
+
+        <section class="view" id="people-view">
+          <div class="section-title">
+            <h2 id="person-section-title">Cadastro de clientes</h2>
+            <span id="person-section-subtitle">Dados comerciais e limite de credito</span>
+          </div>
+          <div class="panel">
+            <form id="person-form" class="form-grid">
+              <input type="hidden" id="person-id" />
+              <label>
+                Nome
+                <input id="person-name" type="text" required />
+              </label>
+              <label>
+                Documento
+                <input id="person-document" type="text" placeholder="CPF/CNPJ" />
+              </label>
+              <label>
+                Telefone
+                <input id="person-phone" type="text" />
+              </label>
+              <label>
+                Email
+                <input id="person-email" type="email" />
+              </label>
+              <label class="hidden-panel" id="user-username-label">
+                Usuario de acesso
+                <input id="person-username" type="text" autocomplete="username" />
+              </label>
+              <label class="hidden-panel" id="user-password-label">
+                Senha
+                <input id="person-password" type="password" autocomplete="new-password" />
+              </label>
+              <label class="hidden-panel" id="user-role-label">
+                Perfil
+                <select id="person-role">
+                  <option value="administrador">Administrador</option>
+                  <option value="financeiro">Financeiro</option>
+                  <option value="estoque">Estoque</option>
+                  <option value="vendas">Vendas</option>
+                </select>
+              </label>
+              <label class="hidden-panel" id="user-active-label">
+                Situacao
+                <select id="person-active">
+                  <option value="1">Ativo</option>
+                  <option value="0">Inativo</option>
+                </select>
+              </label>
+              <label id="person-credit-label">
+                Limite de credito
+                <input id="person-credit" type="number" min="0" step="0.01" value="0" />
+              </label>
+              <label class="hidden-panel" id="person-status-label">
+                Status comercial
+                <select id="person-status">
+                  <option value="Lead">Lead</option>
+                  <option value="Cliente">Cliente</option>
+                </select>
+              </label>
+              <label class="hidden-panel" id="person-size-label">
+                Tamanho
+                <input id="person-size" type="text" list="client-size-options" placeholder="P, M, G, GG..." />
+                <datalist id="client-size-options">
+                  <option value="P"></option>
+                  <option value="M"></option>
+                  <option value="G"></option>
+                  <option value="GG"></option>
+                </datalist>
+              </label>
+              <label class="hidden-panel" id="person-number-label">
+                Numeracao
+                <input id="person-number" type="text" list="client-number-options" placeholder="36, 38, 40..." />
+                <datalist id="client-number-options">
+                  <option value="36"></option>
+                  <option value="38"></option>
+                  <option value="40"></option>
+                  <option value="46"></option>
+                  <option value="48"></option>
+                </datalist>
+              </label>
+              <label class="full-width">
+                Observacoes
+                <textarea id="person-notes" rows="3"></textarea>
+              </label>
+              <div class="form-actions full-width">
+                <button type="submit" class="primary">Salvar cadastro</button>
+                <button type="button" class="ghost" id="person-cancel">Limpar</button>
+              </div>
+            </form>
+          </div>
+          <div class="panel hidden-panel import-panel" id="clients-import-panel">
+            <div>
+              <h3>Importacao de clientes</h3>
+              <p>
+                Importe clientes por planilha com nome, documento, telefone, email, tamanho,
+                numeracao, status Lead/Cliente, data de conversao, observacoes e limite manual inicial.
+              </p>
+            </div>
+            <div class="import-actions stacked">
+              <input type="file" id="clients-file" accept=".csv,.xlsx" />
+              <button type="button" class="ghost" id="clients-template">Baixar planilha modelo</button>
+              <button type="button" class="primary" id="clients-import">Importar clientes</button>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="dashboard-actions people-filter-actions hidden-panel" id="clients-status-filter-panel">
+              <label class="inline-filter">
+                Visualizar
+                <select id="clients-status-filter">
+                  <option value="todos">Todos</option>
+                  <option value="Lead">Leads</option>
+                  <option value="Cliente">Clientes</option>
+                </select>
+              </label>
+              <label class="inline-filter">
+                Data inicial
+                <input id="clients-date-from" type="date" />
+              </label>
+              <label class="inline-filter">
+                Data final
+                <input id="clients-date-to" type="date" />
+              </label>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Nome</th>
+                    <th>Contato</th>
+                    <th>Documento</th>
+                    <th>Cliente/Limite</th>
+                    <th>Tamanho</th>
+                    <th>Numeracao</th>
+                    <th>Acoes</th>
+                  </tr>
+                </thead>
+                <tbody id="people-table"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="panel hidden-panel" id="client-history-panel">
+            <div class="section-title compact">
+              <h3 id="client-history-title">Historico de vendas</h3>
+              <span>Registre tentativas e resultados comerciais do contato</span>
+            </div>
+            <form id="client-history-form" class="form-grid compact-form">
+              <input type="hidden" id="client-history-client-id" />
+              <label>
+                Data
+                <input id="client-history-date" type="datetime-local" required />
+              </label>
+              <label>
+                Resultado
+                <select id="client-history-result" required>
+                  <option value="Contato realizado">Contato realizado</option>
+                  <option value="Proposta enviada">Proposta enviada</option>
+                  <option value="Sem resposta">Sem resposta</option>
+                  <option value="Convertido">Convertido</option>
+                  <option value="Perdido">Perdido</option>
+                </select>
+              </label>
+              <label class="full-width">
+                Observacao
+                <textarea id="client-history-note" rows="3" required></textarea>
+              </label>
+              <div class="form-actions full-width">
+                <button type="submit" class="primary">Registrar historico</button>
+                <button type="button" class="ghost" id="client-history-close">Fechar perfil</button>
+              </div>
+            </form>
+            <div class="table-wrap compact-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Data</th>
+                    <th>Resultado</th>
+                    <th>Observacao</th>
+                  </tr>
+                </thead>
+                <tbody id="client-history-table"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="financial-view">
+          <div class="section-title">
+            <h2 id="finance-section-title">Contas a receber</h2>
+            <span id="finance-section-subtitle">Titulos e movimentacoes financeiras</span>
+          </div>
+          <div class="panel" id="finance-entry-panel">
+            <form id="finance-form" class="form-grid">
+              <input type="hidden" id="finance-id" />
+              <label>
+                Pessoa relacionada
+                <select id="finance-person"></select>
+              </label>
+              <label>
+                Descricao
+                <input id="finance-description" type="text" required />
+              </label>
+              <label>
+                Valor total
+                <input id="finance-amount" type="number" min="0" step="0.01" required />
+              </label>
+              <label>
+                Primeiro vencimento
+                <input id="finance-date" type="date" required />
+              </label>
+              <label>
+                Status
+                <select id="finance-status" required>
+                  <option value="aberto">Aberto</option>
+                  <option value="pago">Pago</option>
+                </select>
+              </label>
+              <label id="finance-cost-center-box">
+                Centro de custo
+                <select id="finance-cost-center"></select>
+              </label>
+              <label id="finance-installments-box">
+                Parcelas
+                <input id="finance-installments" type="number" min="1" step="1" value="1" />
+              </label>
+              <div class="form-actions full-width">
+                <button type="submit" class="primary">Salvar lancamento</button>
+                <button type="button" class="ghost" id="finance-cancel">Limpar</button>
+              </div>
+            </form>
+          </div>
+          <div class="panel" id="finance-table-panel">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Descricao</th>
+                    <th>Pessoa</th>
+                    <th>Centro</th>
+                    <th>Valor</th>
+                    <th>Vencimento</th>
+                    <th>Status</th>
+                    <th>Acoes</th>
+                  </tr>
+                </thead>
+                <tbody id="finance-table"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="panel hidden-panel" id="credit-limit-panel">
+            <div class="section-title compact">
+              <h3>Gestao de limite de credito</h3>
+              <span>Limite manual + acumulado automatico pelas vendas</span>
+            </div>
+            <form id="credit-limit-form" class="form-grid">
+              <label>
+                Cliente
+                <select id="credit-client" required></select>
+              </label>
+              <label>
+                Limite manual
+                <input id="credit-manual" type="number" min="0" step="0.01" value="0" required />
+              </label>
+              <label>
+                Limite automatico
+                <input id="credit-earned" type="text" readonly />
+              </label>
+              <label>
+                Limite total atual
+                <input id="credit-total" type="text" readonly />
+              </label>
+              <div class="form-actions full-width">
+                <button type="submit" class="primary">Salvar limite</button>
+                <button type="button" class="ghost" id="credit-limit-cancel">Limpar</button>
+              </div>
+            </form>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Cliente</th>
+                    <th>Manual</th>
+                    <th>Automatico</th>
+                    <th>Total</th>
+                    <th>Acoes</th>
+                  </tr>
+                </thead>
+                <tbody id="credit-limits-table"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="panel hidden-panel" id="cost-center-panel">
+            <div class="section-title compact">
+              <h3>Centro de custo</h3>
+              <span>Cadastre os grupos para organizar as despesas</span>
+            </div>
+            <form id="cost-center-form" class="form-grid">
+              <input type="hidden" id="cost-center-id" />
+              <label>
+                Nome do centro
+                <input id="cost-center-name" type="text" required />
+              </label>
+              <label>
+                Descricao
+                <input id="cost-center-description" type="text" />
+              </label>
+              <div class="form-actions full-width">
+                <button type="submit" class="primary">Salvar centro</button>
+                <button type="button" class="ghost" id="cost-center-cancel">Limpar</button>
+              </div>
+            </form>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Centro</th>
+                    <th>Descricao</th>
+                    <th>Acoes</th>
+                  </tr>
+                </thead>
+                <tbody id="cost-centers-table"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="panel hidden-panel" id="cash-closing-panel">
+            <div class="section-title compact">
+              <h3>Fechamento de caixa diario</h3>
+              <span>Consolide vendas, recebimentos, despesas e resultado do dia</span>
+            </div>
+            <form id="cash-closing-form" class="form-grid">
+              <label>
+                Data do fechamento
+                <input id="cash-closing-date" type="date" required />
+              </label>
+              <label>
+                Saldo inicial
+                <input id="cash-opening-balance" type="number" min="0" step="0.01" value="0" />
+              </label>
+              <label>
+                Observacoes
+                <input id="cash-closing-notes" type="text" />
+              </label>
+              <div class="form-actions full-width">
+                <button type="button" class="ghost" id="cash-preview-button">Atualizar resumo</button>
+                <button type="submit" class="primary">Fechar caixa</button>
+              </div>
+            </form>
+            <div class="summary-list three-columns" id="cash-closing-summary"></div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Data</th>
+                    <th>Abertura</th>
+                    <th>Entradas</th>
+                    <th>Saidas</th>
+                    <th>Saldo final</th>
+                    <th>Observacoes</th>
+                  </tr>
+                </thead>
+                <tbody id="cash-closures-table"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="inventory-view">
+          <div class="section-title">
+            <h2 id="inventory-section-title">Categorias de estoque</h2>
+            <span id="inventory-section-subtitle">Cadastros e movimentacoes do estoque</span>
+          </div>
+          <div class="summary-list three-columns" id="inventory-summary"></div>
+
+          <div class="panel" id="inventory-categories-panel">
+            <form id="category-form" class="form-grid">
+              <input type="hidden" id="category-id" />
+              <label>
+                Nome da categoria
+                <input id="category-name" type="text" required />
+              </label>
+              <label>
+                Descricao
+                <input id="category-description" type="text" />
+              </label>
+              <div class="form-actions full-width">
+                <button type="submit" class="primary">Salvar categoria</button>
+                <button type="button" class="ghost" id="category-cancel">Limpar</button>
+              </div>
+            </form>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Categoria</th>
+                    <th>Descricao</th>
+                    <th>Acoes</th>
+                  </tr>
+                </thead>
+                <tbody id="categories-table"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel" id="inventory-form-panel">
+            <form id="inventory-form" class="form-grid">
+              <input type="hidden" id="inventory-id" />
+              <label>
+                Codigo
+                <input id="inventory-code" type="text" />
+              </label>
+              <label>
+                Categoria
+                <select id="inventory-category" required></select>
+              </label>
+              <label>
+                Fornecedor
+                <select id="inventory-supplier"></select>
+              </label>
+              <label>
+                Produto
+                <input id="inventory-name" type="text" required />
+              </label>
+              <label>
+                Quantidade
+                <input id="inventory-quantity" type="number" min="0" step="1" required />
+              </label>
+              <label>
+                Custo unitario
+                <input id="inventory-cost" type="number" min="0" step="0.01" value="0" />
+              </label>
+              <label>
+                Preco de venda
+                <input id="inventory-sale-price" type="number" min="0" step="0.01" value="0" />
+              </label>
+              <label>
+                Estoque minimo
+                <input id="inventory-minimum" type="number" min="0" step="1" value="0" />
+              </label>
+              <div class="form-actions full-width">
+                <button type="submit" class="primary">Salvar produto</button>
+                <button type="button" class="ghost" id="inventory-cancel">Limpar</button>
+              </div>
+            </form>
+            <div class="table-wrap compact-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Codigo</th>
+                    <th>Produto</th>
+                    <th>Fornecedor</th>
+                    <th>Qtd.</th>
+                    <th>Venda</th>
+                    <th>Acoes</th>
+                  </tr>
+                </thead>
+                <tbody id="inventory-products-table"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel import-panel" id="inventory-import-panel">
+            <div>
+              <h3>Entrada por planilha</h3>
+              <p>
+                Use o modelo com cabecalho da nota e a grade de produtos abaixo.
+                O sistema identifica fornecedor, valor da nota, parcelas e os itens do estoque.
+              </p>
+            </div>
+            <div class="import-actions stacked">
+              <input type="file" id="inventory-file" accept=".csv,.xlsx" />
+              <button type="button" class="ghost" id="inventory-template">Baixar planilha modelo</button>
+              <button type="button" class="primary" id="inventory-import">Importar planilha</button>
+            </div>
+          </div>
+
+          <div class="panel" id="inventory-list-panel">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Codigo</th>
+                    <th>Produto</th>
+                    <th>Fornecedor</th>
+                    <th>Categoria</th>
+                    <th>Qtd.</th>
+                    <th>Custo</th>
+                    <th>Venda</th>
+                    <th>Valor bruto</th>
+                    <th>Valor liquido</th>
+                    <th>Acoes</th>
+                  </tr>
+                </thead>
+                <tbody id="inventory-table"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="pdv-view">
+          <div class="pdv-tab-panel active" id="pdv-sales-panel">
+            <div class="pdv-sales-shell">
+              <section class="pdv-legacy-main">
+                <div class="panel pdv-sales-toolbar">
+                  <button type="button" class="pdv-new-sale" id="pdv-new-sale">Nova Venda</button>
+
+                  <label class="pdv-inline-field small modern">
+                    <span>Data:</span>
+                    <input id="pdv-sale-date" type="date" />
+                  </label>
+
+                  <label class="pdv-inline-field small modern">
+                    <span>Nota Fiscal:</span>
+                    <input id="pdv-invoice-number" type="number" min="1" step="1" value="1" />
+                  </label>
+
+                  <label class="pdv-inline-field grow modern">
+                    <span>Vendedor:</span>
+                    <select id="pdv-seller"></select>
+                  </label>
+                </div>
+
+                <div class="panel pdv-entry-strip modern">
+                  <label class="pdv-inline-field grow modern">
+                    <span>Produto:</span>
+                    <input id="pdv-search" type="text" placeholder="Digite ou bip o codigo, nome ou categoria" />
+                  </label>
+
+                  <label class="pdv-inline-field medium modern">
+                    <span>Estoque:</span>
+                    <input id="pdv-stock" type="text" readonly />
+                  </label>
+
+                  <label class="pdv-inline-field medium modern">
+                    <span>Quantidade:</span>
+                    <input id="pdv-quantity" type="number" min="1" step="1" value="1" />
+                  </label>
+
+                  <label class="pdv-inline-field medium modern">
+                    <span>Valor:</span>
+                    <input id="pdv-unit-value" type="text" readonly />
+                  </label>
+
+                  <div class="pdv-strip-actions">
+                    <button type="button" class="primary" id="pdv-add-item">Incluir</button>
+                    <button type="button" class="ghost" id="pdv-remove-selected">Excluir</button>
+                  </div>
+                </div>
+
+                <input id="pdv-product" type="hidden" />
+
+                <div class="panel pdv-grid-panel modern">
+                  <div class="table-wrap">
+                    <table class="pdv-sales-table">
+                      <thead>
+                        <tr>
+                          <th>Nome</th>
+                          <th>QTD.</th>
+                          <th>Unidade</th>
+                          <th>Valor</th>
+                          <th>Sub Total</th>
+                        </tr>
+                      </thead>
+                      <tbody id="pdv-table"></tbody>
+                    </table>
+                  </div>
+                </div>
+              </section>
+
+              <aside class="pdv-legacy-side">
+                <div class="panel pdv-side-panel modern-side">
+                  <label>
+                    Cliente:
+                    <select id="pdv-client"></select>
+                  </label>
+
+                  <label>
+                    Forma de Pagamento:
+                    <select id="pdv-method">
+                      <option value="dinheiro">Dinheiro</option>
+                      <option value="pix">PIX</option>
+                      <option value="cartao">Cartao</option>
+                      <option value="crediario">Crediario</option>
+                    </select>
+                  </label>
+
+                  <div class="pdv-side-row pdv-doc-row">
+                    <label>
+                      Vencimento:
+                      <input id="pdv-due-date" type="date" />
+                    </label>
+                    <label>
+                      N Documento:
+                      <input id="pdv-document-number" type="text" />
+                    </label>
+                  </div>
+
+                  <label>
+                    Observacoes:
+                    <textarea id="pdv-notes" rows="3"></textarea>
+                  </label>
+
+                  <div class="pdv-side-row">
+                    <label>
+                      Parcelas:
+                      <input id="pdv-installments" type="number" min="1" step="1" value="1" />
+                    </label>
+                    <label>
+                      Desconto:
+                      <input id="pdv-discount" type="number" min="0" step="0.01" value="0" />
+                    </label>
+                  </div>
+
+                  <div id="pdv-total" class="pdv-total legacy">Total: R$ 0,00</div>
+
+                  <div class="pdv-side-actions">
+                    <button type="button" class="ghost" id="pdv-print">Imprimir</button>
+                    <button type="button" class="primary" id="pdv-finish">Finalizar</button>
+                  </div>
+                </div>
+              </aside>
+            </div>
+          </div>
+
+          <div class="pdv-tab-panel" id="pdv-history-panel">
+            <div class="panel pdv-side-panel">
+              <div class="section-title compact">
+                <h3>Historico de vendas</h3>
+                <span>Ultimas vendas registradas no PDV</span>
+              </div>
+              <div id="pdv-recent-sales" class="recent-sales"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="reports-view">
+          <div class="section-title">
+            <h2 id="reports-section-title">Relatorio de clientes</h2>
+            <span id="reports-section-subtitle">Analise consolidada e mais profissional dos dados</span>
+          </div>
+          <div class="dashboard-actions">
+            <button type="button" class="ghost" id="reports-export-excel">Exportar Excel</button>
+            <button type="button" class="ghost" id="reports-export-csv">Exportar CSV</button>
+            <button type="button" class="ghost" id="reports-export-pdf">Exportar PDF</button>
+            <select id="audit-cleanup-days" class="hidden-panel">
+              <option value="7">Apagar acima de 7 dias</option>
+              <option value="30">Apagar acima de 30 dias</option>
+              <option value="90">Apagar acima de 90 dias</option>
+              <option value="365">Apagar acima de 1 ano</option>
+              <option value="all">Apagar tudo</option>
+            </select>
+            <button type="button" class="ghost hidden-panel" id="audit-cleanup-button">Limpar Auditoria</button>
+          </div>
+          <div class="panel report-filter-panel">
+            <div class="form-grid compact-form">
+              <label>
+                Data inicial
+                <input id="reports-date-from" type="date" />
+              </label>
+              <label>
+                Data final
+                <input id="reports-date-to" type="date" />
+              </label>
+              <label>
+                Visualizacao
+                <select id="reports-period-mode">
+                  <option value="mensal">Mensal</option>
+                  <option value="diaria">Diaria</option>
+                </select>
+              </label>
+              <label class="hidden-panel" id="audit-period-label">
+                Periodo da auditoria
+                <select id="audit-period-filter">
+                  <option value="today">Hoje</option>
+                  <option value="7days">Ultimos 7 dias</option>
+                  <option value="month">Mes especifico</option>
+                  <option value="all">Todos carregados</option>
+                </select>
+              </label>
+              <label class="hidden-panel" id="audit-month-label">
+                Mes
+                <input id="audit-month-filter" type="month" />
+              </label>
+              <label class="hidden-panel" id="audit-page-size-label">
+                Registros por pagina
+                <select id="audit-page-size">
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+                </select>
+              </label>
+            </div>
+            <div class="audit-pagination hidden-panel" id="audit-pagination">
+              <button type="button" class="ghost" id="audit-prev-page">Anterior</button>
+              <span id="audit-page-label">Pagina 1 de 1</span>
+              <button type="button" class="ghost" id="audit-next-page">Proxima</button>
+            </div>
+          </div>
+          <div class="panel report-chart-panel">
+            <div class="section-title compact">
+              <h3>Grafico</h3>
+              <span id="reports-chart-subtitle">Visual do periodo selecionado</span>
+            </div>
+            <div id="reports-chart"></div>
+          </div>
+          <div class="report-highlights" id="reports-highlights"></div>
+          <div class="panel report-grid refined-grid" id="reports-grid"></div>
+          <div class="panel">
+            <div class="section-title compact">
+              <h3 id="reports-table-title">Clientes cadastrados</h3>
+              <span>Detalhamento analitico</span>
+            </div>
+            <div id="reports-table"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="toast-stack" id="toast-stack"></div>
+
+    <div class="dialog-backdrop hidden-panel" id="app-dialog-backdrop">
+      <div class="dialog-card" id="app-dialog-card">
+        <div class="dialog-head">
+          <h3 id="app-dialog-title">Mensagem</h3>
+          <p id="app-dialog-message"></p>
+        </div>
+        <div class="dialog-actions" id="app-dialog-actions"></div>
+      </div>
+    </div>
+
+    <div class="dialog-backdrop hidden-panel" id="payment-dialog-backdrop">
+      <div class="dialog-card payment-card">
+        <div class="dialog-head">
+          <h3 id="payment-dialog-title">Baixa financeira</h3>
+          <p id="payment-dialog-message"></p>
+        </div>
+        <form id="payment-form" class="form-grid compact-form">
+          <input type="hidden" id="payment-entry-id" />
+          <label>
+            Valor em aberto
+            <input id="payment-open-amount" type="text" readonly />
+          </label>
+          <label>
+            Valor a baixar
+            <input id="payment-amount" type="number" min="0.01" step="0.01" required />
+          </label>
+          <div class="dialog-actions full-width">
+            <button type="button" class="ghost" id="payment-cancel">Cancelar</button>
+            <button type="submit" class="primary">Confirmar baixa</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="dialog-backdrop hidden-panel" id="change-password-backdrop">
+      <div class="dialog-card">
+        <div class="dialog-head">
+          <h3>Trocar senha</h3>
+          <p>Atualize a senha do usuario logado para manter o acesso mais seguro.</p>
+        </div>
+        <form id="change-password-form" class="form-grid compact-form">
+          <label>
+            Senha atual
+            <input id="current-password" type="password" autocomplete="current-password" required />
+          </label>
+          <label>
+            Nova senha
+            <input id="new-password" type="password" autocomplete="new-password" required />
+          </label>
+          <label>
+            Confirmar nova senha
+            <input id="confirm-password" type="password" autocomplete="new-password" required />
+          </label>
+          <div class="dialog-actions full-width">
+            <button type="button" class="ghost" id="change-password-cancel">Cancelar</button>
+            <button type="submit" class="primary">Salvar senha</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="auth-overlay hidden-panel" id="auth-overlay">
+      <div class="auth-card">
+        <div class="dialog-head">
+          <h3 id="auth-title">Entrar no sistema</h3>
+          <p id="auth-subtitle">Use um usuario cadastrado para acessar o sistema local.</p>
+        </div>
+
+        <form id="login-form" class="form-grid compact-form">
+          <label>
+            Usuario ou email
+            <input id="login-username" type="text" autocomplete="username" required />
+          </label>
+          <label>
+            Senha
+            <input id="login-password" type="password" autocomplete="current-password" required />
+          </label>
+          <div class="dialog-actions full-width">
+            <button type="submit" class="primary">Entrar</button>
+          </div>
+        </form>
+
+        <form id="setup-form" class="form-grid compact-form hidden-panel">
+          <label>
+            Nome do administrador
+            <input id="setup-name" type="text" required />
+          </label>
+          <label>
+            Usuario ou email
+            <input id="setup-username" type="text" autocomplete="username" required />
+          </label>
+          <label>
+            Senha
+            <input id="setup-password" type="password" autocomplete="new-password" required />
+          </label>
+          <div class="dialog-actions full-width">
+            <button type="submit" class="primary">Criar acesso inicial</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
